@@ -1,14 +1,20 @@
 
 <!DOCTYPE html>
-<html>
+<html ng-app="ColoursApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Colours</title>
-    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script type="text/javascript">
-    TBD
-    </script> -->
+      var app = angular.module('ColoursApp', []);
+      app.controller('ColoursCtrl', function($scope, $http) {
+        $http.get("colours.json")
+        .then(function(response) {
+          $scope.colours = response.data;
+        });
+      });
+    </script>
     <style media="screen">
     body {
       margin: 0;
@@ -46,6 +52,21 @@
       .flex-colours > div.w {
         color: white;
       }
+      .search {
+        height: 50px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      .search > input {
+        display: flex;
+
+        border: 0;
+        font-size: 24px;
+        text-align: center;
+        height: 50px;
+      }
       @media all and (min-width: 501px) and (max-width: 1000px) {
         .flex-colours {
 
@@ -64,9 +85,14 @@
       }
     </style>
   </head>
-  <body ng-app>
+  <body ng-controller="ColoursCtrl">
+    <div class="search">
+      <input type="text" name="colour" ng-model="colourModel" value="" placeholder="Type colour name">
+      <!-- <input type="checkbox" name="hex" value="hex" ng-model="hexModel"> Sort by HEX -->
+    </div>
     <div class="flex-colours">
-        <div value="4C4F56" class="w" style="background:#4C4F56"><span>Abbey</span></div>
+        <div ng-repeat="colour in colours | filter: colourModel | orderBy: hexModel" value="{{colour.hex}}" ng-class="{w: colour.white}" style="background:#{{colour.hex}}"><span>{{colour.name}}</span></div>
+        <!-- <div value="4C4F56" class="w" style="background:#4C4F56"><span>Abbey</span></div>
         <div value="1B1404" class="w" style="background:#1B1404"><span>Acadia</span></div>
         <div value="7CB0A1" style="background:#7CB0A1"><span>Acapulco</span></div>
         <div value="C9FFE5" style="background:#C9FFE5"><span>Aero Blue</span></div>
@@ -1631,7 +1657,7 @@
         <div value="E4D69B" style="background:#E4D69B"><span>Zombie</span></div>
         <div value="A59B91" style="background:#A59B91"><span>Zorba</span></div>
         <div value="044022" class="w" style="background:#044022"><span>Zuccini</span></div>
-        <div value="EDF6FF" style="background:#EDF6FF"><span>Zumthor</span></div>
+        <div value="EDF6FF" style="background:#EDF6FF"><span>Zumthor</span></div> -->
     </div>
   </body>
 </html>
