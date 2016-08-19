@@ -8,6 +8,7 @@ Handy and mobile friendly.
 * ~~Flex grid with static HTML~~
 * ~~Mobile friendly~~
 * ~~AngularJS + JSON + Filter by colour name~~
+* Ability to order list by colour (http://jsfiddle.net/shanfan/ojgp5718/)
 * Ability to check that you learned the colour (using cookies or localStorage)
 * Ability to copy HEX value to clipboard
 * Save your learning progress online (Login via Facebook or Github)
