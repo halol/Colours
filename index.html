@@ -3,7 +3,12 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Colours</title>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript">
+    TBD
+    </script> -->
     <style media="screen">
     body {
       margin: 0;
@@ -24,9 +29,19 @@
           display: flex;
 
       }
+      .flex-colours > div:after {
+        content: "#"attr(value);
+        display: block;
+        width: 100%;
+      }
       .flex-colours > div > span {
         font-weight: 200;
         opacity: .5;
+        display: block;
+        width: 100%;
+      }
+      .flex-colours > div > span:after {
+
       }
       .flex-colours > div.w {
         color: white;
@@ -49,7 +64,7 @@
       }
     </style>
   </head>
-  <body>
+  <body ng-app>
     <div class="flex-colours">
         <div value="4C4F56" class="w" style="background:#4C4F56"><span>Abbey</span></div>
         <div value="1B1404" class="w" style="background:#1B1404"><span>Acadia</span></div>
